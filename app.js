@@ -9,7 +9,7 @@ const indexRouter = require("./routes/index");
 const healthCheck = require("./crons/health-check");
 
 healthCheck(
-  "https://api.app.reprime.id/api/v2/webs/list-articles",
+  "https://api.app.reprime.id/api/v2/webs/list-article",
   "*/2 * * * *" // every 2 minutes
 );
 
