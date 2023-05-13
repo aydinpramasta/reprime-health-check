@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
-const healthCheck = require("./crons/health-check");
+const healthCheck = require("./crons/healthCheck");
 
 healthCheck(
   "https://api.app.reprime.id/api/v2/webs/list-article",
