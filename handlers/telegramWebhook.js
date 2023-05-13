@@ -2,8 +2,6 @@ const axios = require("axios");
 const { sendTelegramMessage } = require("../lib/telegram");
 const { response } = require("express");
 const sendTelegramHealthCheck = async (req, res) => {
-  console.log(req.body);
-
   const chatId = req.body.message.chat.id;
   const text = req.body.message.text;
 
