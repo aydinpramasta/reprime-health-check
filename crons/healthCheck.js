@@ -1,6 +1,6 @@
 const cron = require("node-cron");
 const axios = require("axios");
-const { sendMessageToTelegram } = require("../lib/message");
+const { sendTelegramMessage } = require("../lib/telegram");
 
 const healthCheck = (endpoint, schedule) => {
   if (!cron.validate(schedule)) {
@@ -16,7 +16,7 @@ const healthCheck = (endpoint, schedule) => {
           `Status: ${error.response.status} ${error.response.statusText}\n \n` +
           `URL: ${error.response.config.url}`;
 
-        sendMessageToTelegram(message);
+        sendTelegramMessage(message);
       } else {
         // Server doesn't return any response
         const message =
@@ -24,7 +24,7 @@ const healthCheck = (endpoint, schedule) => {
           "Server tidak mengembalikan response, kemungkinan server sedang down.\n \n" +
           `URL: ${endpoint}`;
 
-        sendMessageToTelegram(message);
+        sendTelegramMessage(message);
       }
     });
   });

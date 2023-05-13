@@ -5,8 +5,11 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-const indexRouter = require("./routes/index");
 const healthCheck = require("./crons/healthCheck");
+const { initTelegramWebhook } = require("./lib/telegram");
+const { sendTelegramHealthCheck } = require("./handlers/telegramWebhook");
+
+initTelegramWebhook();
 
 healthCheck(
   "https://api.app.reprime.id/api/v2/webs/list-article",
@@ -21,6 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.post(`/webhook/${process.env.TELEGRAM_BOT_TOKEN}`, sendTelegramHealthCheck);
 
 module.exports = app;
