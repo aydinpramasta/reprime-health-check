@@ -3,6 +3,7 @@ import bot from "./lib/telegraf.js";
 import { startCommandHandler, statusCommandHandler } from "./lib/commands.js";
 import { healthCheckCronHandler } from "./lib/crons.js";
 
+// Run health check every 2 minutes
 cron.schedule("*/2 * * * *", healthCheckCronHandler);
 
 bot.start(startCommandHandler);
