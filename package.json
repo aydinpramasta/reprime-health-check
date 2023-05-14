@@ -2,6 +2,9 @@
   "name": "reprime-health-check",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.15.0"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www"
