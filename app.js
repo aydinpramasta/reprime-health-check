@@ -1,10 +1,13 @@
 import cron from "node-cron";
 import bot from "./lib/telegraf.js";
 import { startCommandHandler, statusCommandHandler } from "./lib/commands.js";
-import { healthCheckCronHandler } from "./lib/crons.js";
+import {
+  healthCheckPerOneHourCronHandler,
+  healthCheckPerTwoMinutesCronHandler,
+} from "./lib/crons.js";
 
-// Run health check every 2 minutes
-cron.schedule("*/2 * * * *", healthCheckCronHandler);
+cron.schedule("*/2 * * * *", healthCheckPerTwoMinutesCronHandler); // every 2 minutes
+cron.schedule("0 * * * *", healthCheckPerOneHourCronHandler); // every hour
 
 bot.start(startCommandHandler);
 bot.command("status", statusCommandHandler);
