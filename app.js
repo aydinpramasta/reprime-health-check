@@ -8,7 +8,7 @@ import subscribeCommandHandler from "./commands/subscribeCommand.js";
 import unsubscribeCommandHandler from "./commands/unsubscribeCommand.js";
 
 cron.schedule("*/2 * * * *", healthCheckPerTwoMinutesCronHandler); // every 2 minutes
-cron.schedule("0 * * * *", healthCheckPerOneHourCronHandler); // every hour
+cron.schedule("0 6-18 * * *", healthCheckPerOneHourCronHandler); // every hour from 06.00 to 18.00
 
 bot.start(startCommandHandler);
 bot.command("status", statusCommandHandler);
