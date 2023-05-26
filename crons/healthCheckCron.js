@@ -3,7 +3,7 @@ import { generateHealthCheckMessage } from "../lib/helper.js";
 import Subscriber from "../models/subscriber.js";
 import bot from "../lib/telegraf.js";
 
-const healthCheckPerTwoMinutesCronHandler = async () => {
+const healthCheckCronHandler = async () => {
   const endpoints = config.healthCheckUrls;
 
   const message = await generateHealthCheckMessage(endpoints);
@@ -19,4 +19,4 @@ const healthCheckPerTwoMinutesCronHandler = async () => {
   }
 };
 
-export default healthCheckPerTwoMinutesCronHandler;
+export default healthCheckCronHandler;
